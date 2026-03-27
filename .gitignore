@@ -3,6 +3,7 @@ dist/
 .env
 .env.local
 *.log
+*.tsbuildinfo
 .DS_Store
 src/test-fabric.html
 test.html
