@@ -6,6 +6,7 @@ export const FRAME_PRESETS: FrameConfig[] = [
   { name: 'None', color: 'transparent', width: 0, style: 'solid', opacity: 1 },
   { name: 'Thin Black', color: '#000000', width: 4, style: 'solid', opacity: 1 },
   { name: 'White Classic', color: '#ffffff', width: 20, style: 'solid', opacity: 1 },
+  { name: 'Polaroid', color: '#ffffff', width: 16, style: 'polaroid', opacity: 1 },
   { name: 'Gold', color: '#d4a574', width: 15, style: 'double', opacity: 1 },
   { name: 'Shadow', color: 'transparent', width: 0, style: 'shadow', opacity: 1 },
   { name: 'Dark Frame', color: '#1a1a1a', width: 12, style: 'solid', opacity: 1 },
@@ -36,7 +37,28 @@ export class FrameTool extends BaseTool {
     const w = bg.width! * bg.scaleX!;
     const h = bg.height! * bg.scaleY!;
 
-    if (config.style === 'shadow') {
+    if (config.style === 'polaroid') {
+      const pad = config.width;
+      const bottomPad = pad * 3.5;
+
+      const border = new Rect({
+        left: l - pad,
+        top: t - pad,
+        width: w + pad * 2,
+        height: h + pad + bottomPad,
+        fill: config.color,
+        stroke: '#e0e0e0',
+        strokeWidth: 1,
+        opacity: config.opacity,
+        selectable: false,
+        evented: false,
+        shadow: new Shadow({ color: 'rgba(0,0,0,0.15)', blur: 12, offsetX: 2, offsetY: 4 }),
+      } as any);
+      (border as any)._isFrame = true;
+      this.cm.canvas.add(border);
+      this.cm.canvas.sendObjectToBack(border);
+      this.frameObjects.push(border);
+    } else if (config.style === 'shadow') {
       const shadow = new Rect({
         left: l,
         top: t,

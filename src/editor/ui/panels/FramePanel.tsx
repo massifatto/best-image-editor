@@ -29,7 +29,15 @@ export function FramePanel() {
             )}
           >
             <div className="w-14 h-11 bg-gray-100 rounded relative">
-              {p.name !== 'None' && p.style !== 'shadow' && (
+              {p.style === 'polaroid' && (
+                <div className="absolute inset-0 flex flex-col rounded overflow-hidden shadow">
+                  <div className="flex-1 bg-white p-[3px] pb-0">
+                    <div className="w-full h-full bg-gray-200 rounded-[1px]" />
+                  </div>
+                  <div className="h-[10px] bg-white" />
+                </div>
+              )}
+              {p.name !== 'None' && p.style !== 'shadow' && p.style !== 'polaroid' && (
                 <div
                   className="absolute inset-0 rounded"
                   style={{

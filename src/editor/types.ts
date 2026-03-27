@@ -70,7 +70,7 @@ export interface FrameConfig {
   name: string;
   color: string;
   width: number;
-  style: 'solid' | 'double' | 'shadow' | 'rounded';
+  style: 'solid' | 'double' | 'shadow' | 'rounded' | 'polaroid';
   opacity: number;
 }
 
