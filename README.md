@@ -1,6 +1,6 @@
 # Image Editor
 
-An embeddable, Pixie-parity image editor built with React, TypeScript, and Fabric.js.
+An embeddable image editor built with React, TypeScript, and Fabric.js.
 
 ## Quick Start
 
